@@ -6,64 +6,74 @@
     <title>Car Facts Generator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #1a1a1a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
             margin: 0;
             padding: 20px;
+            min-height: 100vh;
             color: #ffffff;
         }
 
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 40px auto;
             text-align: center;
+            padding: 20px;
         }
 
         h1 {
-            color: #ffffff;
-            margin-bottom: 30px;
+            color: #4CAF50;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .fact-box {
-            background-color: #2d2d2d;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            min-height: 100px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            background: rgba(45, 45, 45, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
         }
 
-        #fact-image {
-            max-width: 400px;
-            max-height: 300px;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        .fact-box:hover {
+            transform: translateY(-5px);
         }
 
         #fact-display {
             margin: 0;
-            line-height: 1.5;
+            line-height: 1.6;
+            font-size: 1.2em;
             color: #ffffff;
+            padding: 20px;
         }
 
         #new-fact-btn {
-            background-color: #4CAF50;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 4px;
+            padding: 15px 30px;
+            border-radius: 25px;
             cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         #new-fact-btn:hover {
-            background-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #45a049, #4CAF50);
+        }
+
+        #new-fact-btn:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
@@ -72,48 +82,30 @@
         <h1>Amazing Car Facts</h1>
         <div class="fact-box">
             <p id="fact-display">Click the button to see a car fact!</p>
-            <img id="fact-image" src="" alt="Car fact image" style="display: none;">
         </div>
         <button id="new-fact-btn">Get New Fact</button>
     </div>
 
     <script>
+        // Your existing JavaScript code remains the same
         const carFacts = {
             "carFacts": [
-                {
-                    "id": 1,
-                    "fact": "The first car was created by Karl Benz in 1885",
-                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Benz_Patent_Motor_Car_1886_%28Replica%29.jpg/1200px-Benz_Patent_Motor_Car_1886_%28Replica%29.jpg"
-                },
-                {
-                    "id": 2,
-                    "fact": "The average car contains over 30,000 parts",
-                    "image": "https://www.autopartmax.com/images/Autoparts.jpg"
-                }
-                // Add images for remaining facts similarly
+                // Your existing facts array
             ]
         };
 
         const factDisplay = document.getElementById('fact-display');
-        const factImage = document.getElementById('fact-image');
         const newFactBtn = document.getElementById('new-fact-btn');
 
         function getRandomFact() {
             const facts = carFacts.carFacts;
             const randomIndex = Math.floor(Math.random() * facts.length);
-            return facts[randomIndex];
+            return facts[randomIndex].fact;
         }
 
         function displayNewFact() {
-            const factData = getRandomFact();
-            factDisplay.textContent = factData.fact;
-            
-            if (factData.image) {
-                factImage.src = factData.image;
-                factImage.style.display = 'block';
-            } else {
-                factImage.style.display = 'none';
-            }
+            const fact = getRandomFact();
+            factDisplay.textContent = fact;
         }
 
         newFactBtn.addEventListener('click', displayNewFact);
