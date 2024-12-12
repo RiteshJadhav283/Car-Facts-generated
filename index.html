@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Facts Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .fact-box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #fact-display {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        #new-fact-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #new-fact-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Amazing Car Facts</h1>
+        <div class="fact-box">
+            <p id="fact-display">Click the button to see a car fact!</p>
+        </div>
+        <button id="new-fact-btn">Get New Fact</button>
+    </div>
+
+    <script>
+        const carFacts = {
+            "carFacts": [
+                {
+                    "id": 1,
+                    "fact": "The first car was created by Karl Benz in 1885"
+                },
+                {
+                    "id": 2,
+                    "fact": "The average car contains over 30,000 parts"
+                },
+                {
+                    "id": 3,
+                    "fact": "The first car accident occurred in 1891 in Ohio"
+                },
+                {
+                    "id": 4,
+                    "fact": "The Bugatti Chiron is one of the fastest production cars, reaching speeds over 300 mph"
+                },
+                {
+                    "id": 5,
+                    "fact": "The most expensive car ever sold was a 1955 Mercedes-Benz 300 SLR Uhlenhaut Coupe for $142 million"
+                },
+                {
+                    "id": 6,
+                    "fact": "The first speeding ticket was issued in 1902 for going 45 mph"
+                },
+                {
+                    "id": 7,
+                    "fact": "The Toyota Corolla is the best-selling car model of all time"
+                },
+                {
+                    "id": 8,
+                    "fact": "The first car radio was introduced in 1930 by Motorola"
+                },
+                {
+                    "id": 9,
+                    "fact": "The average American spends about 38,000 hours driving in their lifetime"
+                },
+                {
+                    "id": 10,
+                    "fact": "Ferrari produces fewer than 10,000 cars per year to maintain exclusivity"
+                },
+                {
+                    "id": 11,
+                    "fact": "The first electric car was invented in 1832, before the gasoline car"
+                },
+                {
+                    "id": 12,
+                    "fact": "The world's first traffic light was installed in London in 1868"
+                },
+                {
+                    "id": 13,
+                    "fact": "NASA's Mars Rover cost less than many modern luxury cars"
+                },
+                {
+                    "id": 14,
+                    "fact": "The average car is made up of about 47% steel"
+                },
+                {
+                    "id": 15,
+                    "fact": "The first windshield wipers were hand-operated"
+                },
+                {
+                    "id": 16,
+                    "fact": "The most popular car color worldwide is white"
+                },
+                {
+                    "id": 17,
+                    "fact": "The Ford Model T was the first mass-produced car on an assembly line"
+                },
+                {
+                    "id": 18,
+                    "fact": "The word 'car' comes from the Latin word 'carrus' meaning wheeled vehicle"
+                },
+                {
+                    "id": 19,
+                    "fact": "The average modern car can process up to 25GB of data per hour"
+                },
+                {
+                    "id": 20,
+                    "fact": "75% of all Rolls Royce cars ever produced are still on the road today"
+                }
+            ]
+        };
+
+        const factDisplay = document.getElementById('fact-display');
+        const newFactBtn = document.getElementById('new-fact-btn');
+
+        function getRandomFact() {
+            const facts = carFacts.carFacts;
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            return facts[randomIndex].fact;
+        }
+
+        function displayNewFact() {
+            const fact = getRandomFact();
+            factDisplay.textContent = fact;
+        }
+
+        newFactBtn.addEventListener('click', displayNewFact);
+        displayNewFact();
+    </script>
+</body>
+</html>
